@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zp.mapper.UdictMapper">
+  <resultMap id="BaseResultMap" type="com.zp.pojo.Udict">
+    <!--@mbg.generated-->
+    <!--@Table t_udict-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ustatus" jdbcType="VARCHAR" property="ustatus" />
+    <result column="uvalue" jdbcType="VARCHAR" property="uvalue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, ustatus, uvalue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_udict
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_udict
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.zp.pojo.Udict" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_udict (ustatus, uvalue)
+    values (#{ustatus,jdbcType=VARCHAR}, #{uvalue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.zp.pojo.Udict" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_udict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ustatus != null">
+        ustatus,
+      </if>
+      <if test="uvalue != null">
+        uvalue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ustatus != null">
+        #{ustatus,jdbcType=VARCHAR},
+      </if>
+      <if test="uvalue != null">
+        #{uvalue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zp.pojo.Udict">
+    <!--@mbg.generated-->
+    update t_udict
+    <set>
+      <if test="ustatus != null">
+        ustatus = #{ustatus,jdbcType=VARCHAR},
+      </if>
+      <if test="uvalue != null">
+        uvalue = #{uvalue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zp.pojo.Udict">
+    <!--@mbg.generated-->
+    update t_udict
+    set ustatus = #{ustatus,jdbcType=VARCHAR},
+      uvalue = #{uvalue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
